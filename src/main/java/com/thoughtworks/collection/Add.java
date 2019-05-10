@@ -65,7 +65,12 @@ public class Add {
     }
 
     public List<Integer> getProcessedList(List<Integer> arrayList) {
-        throw new NotImplementedException();
+        List<Integer> result = new ArrayList<>();
+        for (int i = 1; i < arrayList.size(); i++) {
+            int item = (arrayList.get(i - 1) + arrayList.get(i)) * 3;
+            result.add(item);
+        }
+        return result;
     }
 
     private class Border {
