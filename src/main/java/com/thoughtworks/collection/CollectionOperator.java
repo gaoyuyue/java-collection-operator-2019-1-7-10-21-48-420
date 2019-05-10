@@ -9,16 +9,21 @@ import java.util.stream.IntStream;
 
 public class CollectionOperator {
     public List<Integer> getListByInterval(int left, int right) {
-        if (left > right) {
-            List<Integer> result = IntStream.rangeClosed(right, left).boxed().collect(Collectors.toList());
-            Collections.reverse(result);
-            return result;
+        if (left < right) {
+            return IntStream.rangeClosed(left, right).boxed().collect(Collectors.toList());
         }
-        return IntStream.rangeClosed(left, right).boxed().collect(Collectors.toList());
+        List<Integer> result = IntStream.rangeClosed(right, left).boxed().collect(Collectors.toList());
+        Collections.reverse(result);
+        return result;
     }
 
     public List<Integer> getEvenListByIntervals(int left, int right) {
-        throw new NotImplementedException();
+        if (left < right) {
+            return IntStream.rangeClosed(left, right).boxed().filter(Numbers::isEven).collect(Collectors.toList());
+        }
+        List<Integer> result = IntStream.rangeClosed(right, left).boxed().filter(Numbers::isEven).collect(Collectors.toList());
+        Collections.reverse(result);
+        return result;
     }
 
     public List<Integer> popEvenElments(int[] array) {
