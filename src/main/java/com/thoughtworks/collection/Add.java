@@ -61,7 +61,10 @@ public class Add {
     }
 
     public List<Integer> sortByEvenAndOdd(List<Integer> arrayList) {
-        throw new NotImplementedException();
+        List<Integer> first = arrayList.stream().filter(this::isEven).sorted().collect(Collectors.toList());
+        List<Integer> second = arrayList.stream().filter(this::isOdd).sorted((f, s) -> s - f).collect(Collectors.toList());
+        first.addAll(second);
+        return first;
     }
 
     public List<Integer> getProcessedList(List<Integer> arrayList) {
