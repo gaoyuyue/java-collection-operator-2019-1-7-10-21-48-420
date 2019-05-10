@@ -3,6 +3,7 @@ package com.thoughtworks.collection;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Add {
@@ -13,19 +14,23 @@ public class Add {
 
     public int getSumOfOdds(int leftBorder, int rightBorder) {
         Border border = new Border(leftBorder, rightBorder).invoke();
-        return IntStream.rangeClosed(border.getLeftBorder(), border.getRightBorder()).filter(i -> i % 2 == 1).sum();
+        return IntStream.rangeClosed(border.getLeftBorder(), border.getRightBorder()).filter(this::isOdd).sum();
+    }
+
+    private boolean isOdd(int i) {
+        return i % 2 == 1;
     }
 
     public int getSumTripleAndAddTwo(List<Integer> arrayList) {
-        throw new NotImplementedException();
+        return arrayList.stream().map(item -> item * 3 + 2).reduce(0, Integer::sum);
     }
 
     public List<Integer> getTripleOfOddAndAddTwo(List<Integer> arrayList) {
-        throw new NotImplementedException();
+        return arrayList.stream().map(item -> isOdd(item) ? item * 3 + 2 : item).collect(Collectors.toList());
     }
 
     public int getSumOfProcessedOdds(List<Integer> arrayList) {
-        throw new NotImplementedException();
+        return arrayList.stream().filter(this::isOdd).map(item -> item * 3 + 5).reduce(0, Integer::sum);
     }
 
     public double getMedianOfEven(List<Integer> arrayList) {
