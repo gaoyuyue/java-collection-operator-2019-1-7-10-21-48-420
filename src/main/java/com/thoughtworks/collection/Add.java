@@ -2,6 +2,7 @@ package com.thoughtworks.collection;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -9,7 +10,11 @@ import java.util.stream.IntStream;
 public class Add {
     public int getSumOfEvens(int leftBorder, int rightBorder) {
         Border border = new Border(leftBorder, rightBorder).invoke();
-        return IntStream.rangeClosed(border.getLeftBorder(), border.getRightBorder()).filter(i -> i % 2 == 0).sum();
+        return IntStream.rangeClosed(border.getLeftBorder(), border.getRightBorder()).filter(this::isEven).sum();
+}
+
+    private boolean isEven(int i) {
+        return i % 2 == 0;
     }
 
     public int getSumOfOdds(int leftBorder, int rightBorder) {
@@ -34,7 +39,13 @@ public class Add {
     }
 
     public double getMedianOfEven(List<Integer> arrayList) {
-        throw new NotImplementedException();
+        List<Integer> result = arrayList.stream().filter(this::isEven).collect(Collectors.toList());
+        int count = result.size();
+        int mid = count >> 1;
+        if (isEven(count)) {
+            return (result.get(mid -1) + result.get(mid)) >> 1;
+        }
+        return result.get(mid);
     }
 
     public double getAverageOfEven(List<Integer> arrayList) {
