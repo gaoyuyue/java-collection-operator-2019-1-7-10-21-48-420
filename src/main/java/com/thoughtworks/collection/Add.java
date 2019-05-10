@@ -53,7 +53,7 @@ public class Add {
     }
 
     public boolean isIncludedInEvenIndex(List<Integer> arrayList, Integer specialElment) {
-        throw new NotImplementedException();
+        return arrayList.stream().filter(this::isEven).collect(Collectors.toList()).contains(specialElment);
     }
 
     public List<Integer> getUnrepeatedFromEvenIndex(List<Integer> arrayList) {
