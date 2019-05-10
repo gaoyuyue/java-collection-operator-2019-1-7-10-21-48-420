@@ -7,16 +7,13 @@ import java.util.stream.IntStream;
 
 public class Add {
     public int getSumOfEvens(int leftBorder, int rightBorder) {
-        if (leftBorder > rightBorder) {
-            int temp = leftBorder;
-            leftBorder = rightBorder;
-            rightBorder = temp;
-        }
-        return IntStream.rangeClosed(leftBorder, rightBorder).filter(i -> i % 2 == 0).sum();
+        Border border = new Border(leftBorder, rightBorder).invoke();
+        return IntStream.rangeClosed(border.getLeftBorder(), border.getRightBorder()).filter(i -> i % 2 == 0).sum();
     }
 
     public int getSumOfOdds(int leftBorder, int rightBorder) {
-        throw new NotImplementedException();
+        Border border = new Border(leftBorder, rightBorder).invoke();
+        return IntStream.rangeClosed(border.getLeftBorder(), border.getRightBorder()).filter(i -> i % 2 == 1).sum();
     }
 
     public int getSumTripleAndAddTwo(List<Integer> arrayList) {
@@ -53,5 +50,32 @@ public class Add {
 
     public List<Integer> getProcessedList(List<Integer> arrayList) {
         throw new NotImplementedException();
+    }
+
+    private class Border {
+        private int leftBorder;
+        private int rightBorder;
+
+        public Border(int leftBorder, int rightBorder) {
+            this.leftBorder = leftBorder;
+            this.rightBorder = rightBorder;
+        }
+
+        public int getLeftBorder() {
+            return leftBorder;
+        }
+
+        public int getRightBorder() {
+            return rightBorder;
+        }
+
+        public Border invoke() {
+            if (leftBorder > rightBorder) {
+                int temp = leftBorder;
+                leftBorder = rightBorder;
+                rightBorder = temp;
+            }
+            return this;
+        }
     }
 }
