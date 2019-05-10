@@ -44,6 +44,9 @@ public class CollectionOperator {
     }
 
     public List<Integer> addUncommonElement(Integer[] firstArray, Integer[] secondArray) {
-        throw new NotImplementedException();
+        List<Integer> first = Arrays.stream(firstArray).collect(Collectors.toList());
+        List<Integer> second = Arrays.stream(secondArray).filter(i -> !first.contains(i)).collect(Collectors.toList());
+        first.addAll(second);
+        return first;
     }
 }
