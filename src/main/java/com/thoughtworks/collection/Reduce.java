@@ -2,6 +2,8 @@ package com.thoughtworks.collection;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -67,7 +69,18 @@ public class Reduce {
     }
 
     public int getLastOdd() {
-        throw new NotImplementedException();
+        List<Integer> result = new ArrayList<>();
+        for (int i = arrayList.size() - 1; i >= 0; i--) {
+            Integer item = arrayList.get(i);
+            result.add(item);
+        }
+
+        for (Integer item : result) {
+            if (Numbers.isOdd(item)) {
+                return item;
+            }
+        }
+        return Integer.MAX_VALUE;
     }
 
     public int getIndexOfLastOdd() {
