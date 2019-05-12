@@ -18,7 +18,7 @@ public class Reduce {
     }
 
     public double getMinimum() {
-        throw new NotImplementedException();
+        return arrayList.stream().min(Comparator.comparingInt(o -> o)).get();
     }
 
     public double getAverage() {
