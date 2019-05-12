@@ -40,11 +40,17 @@ public class Reduce {
                 return item;
             }
         }
-        return 0;
+        return Integer.MAX_VALUE;
     }
 
     public int getIndexOfFirstEven() {
-        throw new NotImplementedException();
+        for (int i = 0; i < arrayList.size(); i++) {
+            Integer item = arrayList.get(i);
+            if (Numbers.isEven(item)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public boolean isEqual(List<Integer> arrayList) {
