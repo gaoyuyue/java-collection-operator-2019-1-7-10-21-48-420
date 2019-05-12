@@ -26,7 +26,12 @@ public class Reduce {
     }
 
     public double getOrderedMedian() {
-        throw new NotImplementedException();
+        int count = arrayList.size();
+        int mid = count >> 1;
+        if (Numbers.isEven(count)) {
+            return (arrayList.get(mid - 1) + arrayList.get(mid)) / 2.0;
+        }
+        return arrayList.get(mid);
     }
 
     public int getFirstEven() {
