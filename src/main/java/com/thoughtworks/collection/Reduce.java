@@ -52,7 +52,7 @@ public class Reduce {
         if (Numbers.isEven(count)) {
             return ((Integer)singleLink.getNode(mid) + (Integer) singleLink.getNode(mid + 1)) / 2.0;
         }
-        return arrayList.get(mid).doubleValue();
+        return ((Integer)singleLink.getNode(mid + 1)).doubleValue();
     }
 
     public int getLastOdd() {
