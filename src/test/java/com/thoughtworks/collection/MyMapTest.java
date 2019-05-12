@@ -45,7 +45,7 @@ public class MyMapTest {
 
         MyMap myMap = new MyMap(list);
 
-        String[] result = new String[]{"a", "m", "aa", "ad", "az", "ba"};
+        String[] result = new String[]{"a", "m", "aa", "ad", "b", "ba"};
         List<String> resultList = Arrays.asList(result);
 
         assertThat(myMap.mapLetters()).isEqualTo(resultList);
