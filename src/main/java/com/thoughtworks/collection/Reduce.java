@@ -69,13 +69,8 @@ public class Reduce {
     }
 
     public int getLastOdd() {
-        List<Integer> result = new ArrayList<>();
         for (int i = arrayList.size() - 1; i >= 0; i--) {
             Integer item = arrayList.get(i);
-            result.add(item);
-        }
-
-        for (Integer item : result) {
             if (Numbers.isOdd(item)) {
                 return item;
             }
@@ -84,6 +79,12 @@ public class Reduce {
     }
 
     public int getIndexOfLastOdd() {
-        throw new NotImplementedException();
+        for (int i = arrayList.size() - 1; i >= 0; i--) {
+            Integer item = arrayList.get(i);
+            if (Numbers.isOdd(item)) {
+                return i;
+            }
+        }
+        return Integer.MAX_VALUE;
     }
 }
