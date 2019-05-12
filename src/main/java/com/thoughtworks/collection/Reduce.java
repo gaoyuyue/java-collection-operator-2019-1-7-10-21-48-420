@@ -37,12 +37,7 @@ public class Reduce {
     }
 
     public int getFirstEven() {
-        for (Integer item : arrayList) {
-            if (Numbers.isEven(item)) {
-                return item;
-            }
-        }
-        return Integer.MAX_VALUE;
+        return arrayList.stream().filter(Numbers::isEven).findFirst().get();
     }
 
     public int getIndexOfFirstEven() {
